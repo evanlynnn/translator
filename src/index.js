@@ -1,7 +1,6 @@
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
 
-const api = "https://covid19.mathdro.id/api/countries";
 const errors = document.querySelector(".errors");
 const loading = document.querySelector(".loading");
 const cases = document.querySelector(".translation");
