@@ -14,6 +14,8 @@ const form = document.querySelector(".form-data");
 // grab the country name
 const country = document.querySelector(".country-name");
 
+const dstLanguageElement = document.getElementById("dstlnguage")
+
 const subscriptionKey = "9a624158ef2949fcb5a695f60ea0823a";
 const endpoint = "https://api.cognitive.microsofttranslator.com";
 
@@ -22,6 +24,7 @@ const endpoint = "https://api.cognitive.microsofttranslator.com";
 const location = "koreacentral";
 
 const translate = async text => {
+  const dstLanguage = dstLanguageElement.options[dstLanguageElement.selectedIndex].value
   await axios({
     baseURL: endpoint,
     url: '/translate',
@@ -35,7 +38,7 @@ const translate = async text => {
     params: {
       'api-version': '3.0',
       'from': 'en',
-      'to': ['zh', 'it']
+      'to': [dstLanguage]
     },
     data: [{
       'text': text
@@ -45,7 +48,7 @@ const translate = async text => {
     loading.style.display = "none";
     cases.textContent = response.data[0].translations[0].text;
     results.style.display = "block";
-    alert(JSON.stringify(response.data, null, 4));
+    // alert(JSON.stringify(response.data, null, 4));
   })
 }
 
