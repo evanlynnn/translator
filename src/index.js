@@ -24,6 +24,7 @@ const endpoint = "https://api.cognitive.microsofttranslator.com";
 const location = "koreacentral";
 
 const translate = async text => {
+  
   const dstLanguage = dstLanguageElement.options[dstLanguageElement.selectedIndex].value
   await axios({
     baseURL: endpoint,
@@ -37,7 +38,6 @@ const translate = async text => {
     },
     params: {
       'api-version': '3.0',
-      'from': 'en',
       'to': [dstLanguage]
     },
     data: [{
